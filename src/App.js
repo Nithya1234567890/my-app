@@ -95,7 +95,7 @@ function App() {
         <Alert alert={alert} />
         <div className="container">
           <Routes>
-            <Route exact path="/" element={<Textform modex={modex} toggley={toggley} showAlert={showAlert} changeRed={changeRed} changeGreen={changeGreen} changeBlue={changeBlue} themeColor={theme} />} />
+            <Route exact path="/my-app" element={<Textform modex={modex} toggley={toggley} showAlert={showAlert} changeRed={changeRed} changeGreen={changeGreen} changeBlue={changeBlue} themeColor={theme} />} />
             <Route exact path="/about" element={<About toggley={toggley} themeColor={theme} modex={modex} />} />
           </Routes>
         </div>
