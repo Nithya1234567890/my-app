@@ -6,7 +6,7 @@ export default function Navbar(props) {
     <div>
     <nav style={{backgroundColor:`${props.modex==='light'&&props.themeColor==='white'?'#ebebeb':'lightgray'}`}} className='navbar navbar-expand-lg'>
         <div className="container-fluid">
-          <Link style={{color:'black'}} className="navbar-brand" to="/">
+          <Link style={{color:'black'}} className="navbar-brand" to="/my-app">
             TextUtils
           </Link>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -20,7 +20,7 @@ export default function Navbar(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link style={{color:'black'}} className="nav-link active" aria-current="page" to="/">
+                <Link style={{color:'black'}} className="nav-link active" aria-current="page" to="/my-app">
                   Home
                 </Link>
               </li>
