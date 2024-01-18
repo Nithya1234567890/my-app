@@ -1,0 +1,110 @@
+import React from 'react';
+import { useState } from 'react';
+import './App.css';
+import Navbar from './components/Navbar';
+import Textform from './components/Textform';
+import Alert from './components/Alert';
+import About from './components/About';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+function App() {
+  const [modex, setmode] = useState('light');
+  const [alert, setAlert] = useState(null);
+  const [theme, setTheme] = useState('white');
+
+  const showAlert = (type, message) => {
+    setAlert({
+      type: type,
+      msg: message,
+    });
+    setTimeout(() => {
+      setAlert(null);
+    }, 1500);
+  };
+
+  const changeRed = () => {
+    setTheme('red');
+    document.body.style.backgroundColor = '#832e2e';
+    document.body.style.color = 'white';
+    showAlert('success', 'Theme has been changed to Red');
+    document.getElementById('footer').style.backgroundColor = '#832e2e';
+    document.getElementById('footer').style.color = 'white';
+    document.getElementById('footer').style.borderTopColor = 'white';
+  };
+
+  const changeBlue = () => {
+    setTheme('blue');
+    document.body.style.backgroundColor = '#05052f';
+    document.body.style.color = 'white';
+    showAlert('success', 'Theme has been changed to Blue');
+    document.getElementById('footer').style.backgroundColor = '#05052f';
+    document.getElementById('footer').style.color = 'white';
+    document.getElementById('footer').style.borderTopColor = 'white';
+  };
+
+  const changeGreen = () => {
+    setTheme('green');
+    document.body.style.backgroundColor = '#0d3a0d';
+    document.body.style.color = 'white';
+    showAlert('success', 'Theme has been changed to Green');
+    document.getElementById('footer').style.backgroundColor = '#0d3a0d';
+    document.getElementById('footer').style.color = 'white';
+    document.getElementById('footer').style.borderTopColor = 'white';
+  };
+
+  const changeWhite = () => {
+    setTheme('white');
+    document.body.style.backgroundColor = 'white';
+    document.body.style.color = 'black';
+    showAlert('success', 'Theme has been changed to white');
+    document.getElementById('footer').style.backgroundColor = 'white';
+    document.getElementById('footer').style.color = 'black';
+    document.getElementById('footer').style.borderTopColor = 'black';
+  };
+
+  const changeBlack = () => {
+    setTheme('black');
+    document.body.style.backgroundColor = 'black';
+    document.body.style.color = 'white';
+    document.getElementById('footer').style.backgroundColor = 'black';
+    document.getElementById('footer').style.color = 'white';
+    document.getElementById('footer').style.borderTopColor = 'white';
+  };
+
+  const toggley = () => {
+    if (modex === 'light') {
+      setmode('dark');
+      changeBlack();
+    } else {
+      setmode('light');
+      changeWhite();
+    }
+  };
+
+  return (
+    <>
+      <Router>
+        <Navbar
+          modex={modex}
+          toggley={toggley}
+          changeRed={changeRed}
+          changeGreen={changeGreen}
+          changeBlue={changeBlue}
+          themeColor={theme}
+        />
+        <Alert alert={alert} />
+        <div className="container">
+          <Routes>
+            <Route exact path="/" element={<Textform modex={modex} toggley={toggley} showAlert={showAlert} changeRed={changeRed} changeGreen={changeGreen} changeBlue={changeBlue} themeColor={theme} />} />
+            <Route exact path="/about" element={<About toggley={toggley} themeColor={theme} modex={modex} />} />
+          </Routes>
+        </div>
+      </Router>
+      <br />
+      <br />
+      <footer id="footer">@All Rights Reserved</footer>
+    </>
+  );
+}
+
+export default App;
